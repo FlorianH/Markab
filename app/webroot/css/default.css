@@ -1,0 +1,125 @@
+* {
+  margin:0;
+  padding:0;
+}
+
+body {
+  color: #000;
+  background: #EEE;
+  font-family: Arial, sans-serif;
+  overflow-y: scroll;
+}
+
+a:link, a:visited {
+  color: #000;
+  text-decoration: underline;
+}
+a:hover, a:active {
+  color: #333;
+  text-decoration: none;
+}
+
+form {
+  padding: 10px;
+}
+
+form label {
+  padding-right: 10px;
+}
+
+form .password {
+  width: 300px;
+  float: left;
+}
+
+form .submit {
+  margin-left: 300px;
+}
+
+form #LoginPassword {
+  padding: 3px;
+  width: 200px;
+}
+form .submit input {
+  padding: 3px;
+  width: 60px;
+}
+
+.message {
+  background: white;
+  border: solid #DDD 1px;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+
+#container {
+  width: 880px;
+  margin: 50px auto;
+}
+
+#header {
+  border-bottom: 1px solid #DDD;
+  padding: 3px 10px;
+  margin-bottom: 10px;
+}
+
+#header, #header * {
+  font-size: 22px;
+  font-weight: normal;
+}
+
+#content p {
+  margin: 10px 10px 20px 10px;
+}
+
+#images {
+  float: none;
+  clear: both;
+}
+
+#images .item {
+  position: relative;
+  font-size: 10px;
+  color: #666;
+  float: left;
+  margin: 0 0 15px 15px;
+}
+
+#images .item a.select_button,
+#images .item a.select_button:link,
+#images .item a.select_button:visited {
+  position: absolute;
+  bottom: 0px;
+  right: 0px;
+  display: block;
+  height: 35px;
+  width: 35px;
+  background: url('../img/checked_icon.png') no-repeat 0 0;
+  overflow: hidden;
+  text-indent: -1000em;
+}
+
+#images .selected a.select_button,
+#images .selected a.select_button:link,
+#images .selected a.select_button:visited,
+#images .item a.select_button:hover {
+  background-position: 0 -35px;
+}
+
+#images .image {
+  width: 200px;
+  overflow: hidden;
+}
+
+
+#footer {
+    text-align: right;
+    border-top: 1px solid #DDD;
+    padding: 3px 10px;
+    margin-top: 10px;
+}
+  #footer, #footer * {
+    color: #AAA;
+    font-size: 10px;
+  }

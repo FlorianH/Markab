@@ -1,1 +1,47 @@
-You can find more information on http://markab.metaautomat.de/.
+    __  ___            __         __  
+   /  |/  /____ ______/ /______ _/ /_ 
+  / /|_/ // __ `/ ___/ //_/ __ `/ __ \
+ / /  / // /_/ / /  / ,< / /_/ / /_/ /
+/_/  /_/ \__,_/_/  /_/|_|\__,_/_.___/ 
+                                      
+
+Markab solves the following problem: A photographer made photos for a client and wants to present these pictures for selection.
+
+Markab enables you to create galleries on your own server and protect them with passwords. You can send the link to that gallery to your client and she or he can mark the pictures she or he likes. Markab is open source software.
+
+Demo installation: http://markab.metaautomat.de/demo/example
+
+
+-- Installation --
+
+ 1. Download the project (or pull it via git)
+ 2. Unzip the project and upload it to your server
+ 3. Add your gallery to the /data/ folder (the package contains an example)
+
+
+-- Upgrade --
+
+If you already have a working installation of Markab, just download the newer version and replace the "app" and "cake" folder in your installation with the new ones. You do not have to touch the "data" folder.
+
+
+-- Password protection --
+
+If you want to, you can protect a gallery with a password. To do that, just create a file named "password.php" in your gallery's folder and put the following content into the created file:
+
+ <?php
+   Configure::write('Galleries.password', 'YOUR_PASS');
+
+-- Projects and license --
+
+Markab is build upon the cakephp framework in the backend, and the jQuery library in the frontend. Additionally, Simon Jarvis' "SimpleImage" library is used to render the thumbnails. The icons were taken from the free iconsweets.com iconset. Markab uses the jQuery plugin "masonry" by David Desandro.
+
+Markab is licensed unter the MIT license.
+
+
+-- Changelog --
+
+0.3.6   More flexible floating with the "masonry plugin"
+0.3.5   Support for images in portrait format and bugfixes
+0.3     Rendering and caching of thumbnails
+0.2     Multiple galleries per Markab instance
+0.1     Initial release

@@ -26,17 +26,18 @@
  * its action called 'display', and we pass a param to select the view file
  * to use (in this case, /app/views/pages/home.ctp)...
  */
-	Router::connect('/', array('controller' => 'galleries', 'action' => 'index'));
+  Router::connect('/', array('controller' => 'galleries', 'action' => 'index'));
 
-	Router::connect('/thumb/:gallery/:image', array('controller' => 'thumbnails', 'action' => 'index'));
+  Router::connect('/thumb/:gallery/:image', array('controller' => 'thumbnails', 'action' => 'index'));
 
-	Router::connect('/login/*', array('controller' => 'security', 'action' => 'login'));
-	Router::connect('/logout', array('controller' => 'security', 'action' => 'logout'));
+  Router::connect('/login/*', array('controller' => 'security', 'action' => 'login'));
+  Router::connect('/logout', array('controller' => 'security', 'action' => 'logout'));
 
-	Router::connect('/select/:id/:image/:value', array('controller' => 'galleries', 'action' => 'select'));
-	Router::connect('/*', array('controller' => 'galleries', 'action' => 'show'));
+  Router::connect('/select/:id/:image/:value', array('controller' => 'galleries', 'action' => 'select'));
+  
+  Router::connect('/*', array('controller' => 'galleries', 'action' => 'show'));
   
 /**
  * ...and connect the rest of 'Pages' controller's urls.
  */
-#	Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));
+# Router::connect('/pages/*', array('controller' => 'pages', 'action' => 'display'));

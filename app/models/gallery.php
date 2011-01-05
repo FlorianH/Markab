@@ -20,16 +20,16 @@ class Gallery extends AppModel {
 
     $this->directory = Configure::read('Galleries.root') . $data['id'];
 
-    if (file_exists($this->directory)) {
-
+    if (file_exists($this->directory))
+    {
       $this->password = $this->loadPassword();
       $this->pictures = $this->loadPictures();
 
       if (count($this->pictures) > 0)
+      {
         $this->loadSelected();
-
+      }
     }
-
   }
 
   
@@ -78,10 +78,12 @@ class Gallery extends AppModel {
   }//loadPictures()
 
 
-  public function hasPictures() {
-
+  /**
+   * @return boolean
+   */
+  public function hasPictures()
+  {
     return (count($this->pictures) > 0);
-
   }
   
 
@@ -89,19 +91,23 @@ class Gallery extends AppModel {
 
     $filename = $this->directory . DS . Configure::read('Galleries.selected_file_name');
 
+    //Create file and make shure it is writable
     if (!file_exists($filename)) file_put_contents($filename,'');
     
     $selected_files = file($filename);
 
-    if (count($selected_files) !== 0) {
-      foreach($selected_files as $selected_file) {
+    if (count($selected_files) !== 0)
+    {
+      foreach($selected_files as $selected_file)
+      {
         $selected_file = trim($selected_file);
         if (!empty($selected_file))
+        {
           $this->pictures[$selected_file]['selected'] = true;
+        }
       }
     }
-
-  }//loadSelected()
+  }
 
 
   public function markAsSelected($params) {

@@ -25,7 +25,7 @@
  * Markab specific configuration.
  */
    Configure::write('Markab.version', '0.3.6' );
-   Configure::write('Markab.homepage', 'http://florianherlings.de/projekte/markab' );
+   Configure::write('Markab.homepage', 'http://markab.metaautomat.de/' );
  
    Configure::write('Galleries.root', ROOT . DS . 'data' . DS );
    Configure::write('Galleries.image_cache', WWW_ROOT . 'image_cache' .DS);

@@ -4,8 +4,8 @@
  * Displays the homepage, or a gallery and provides the
  * endpoint for the ajax select process.
  */
-class GalleriesController extends AppController {
-
+class GalleriesController extends AppController
+{
 
   public $name = 'Galleries';
 
@@ -19,7 +19,6 @@ class GalleriesController extends AppController {
     $logged_in = ($this->Session->read('user_password'));
     $this->set('logged_in', $logged_in);
   }
-
 
 
   /**
@@ -40,7 +39,6 @@ class GalleriesController extends AppController {
       $this->Session->setFlash(__('The page you requested does not exist.', true));
       $this->redirect('/');
     }
-
     $this->set('id', $id);
     $this->set('pictures', $this->Gallery->getPictures());
   }
@@ -54,10 +52,10 @@ class GalleriesController extends AppController {
   {
     $this->autoRender = false;
     
-    $this->checkLogin($this->params['id']);
+    $this->_checkLogin($this->params['id']);
 
     $this->Gallery = new Gallery($this->params);
-    $this->Gallery->markAsSelected($this->params);
+    $this->Gallery->markAsSelected($this->params['image'], $this->params['value']);
 
     die($this->params['id'].' updated.');
   }
@@ -89,4 +87,5 @@ class GalleriesController extends AppController {
     }
   }
 
+  
 }

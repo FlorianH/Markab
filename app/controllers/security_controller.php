@@ -2,7 +2,8 @@
 
 
 
-class SecurityController extends AppController {
+class SecurityController extends AppController
+{
 
   public $name = 'Security';
 
@@ -20,14 +21,14 @@ class SecurityController extends AppController {
    * password is incorrect, the show gallery action will again redirect the
    * usere to this action and he can enter another password.
    */
-  function login($id) {
-
-    if (in_array('data', array_keys($this->params))) {
+  function login($id)
+  {
+    if (in_array('data', array_keys($this->params)))
+    {
       $this->Session->write('user_password', $this->params['data']['Login']['password']);
       $this->redirect('/'.$id);
     }
     $this->set('id', $id);
-
   }
 
 
@@ -37,7 +38,8 @@ class SecurityController extends AppController {
    * If the user hits this page, the stored password in the session will be
    * deleted and he/she will be redirected to the index action.
    */
-  function logout() {
+  function logout()
+  {
 		$this->Session->setFlash(__('You were correctly logged out.', true));
     $this->Session->delete('user_password');
     $this->redirect('/');

@@ -1,38 +1,35 @@
 <?php
 
-include('../libs/SimpleImage.php');
 
-class ThumbnailsController extends AppController {
+class ThumbnailsController extends AppController
+{
 
   public $name = 'Thumbnails';
 
   public $uses = array();
 
 
-
-  public function index() {
-
+  function beforeFilter()
+  {
+    $filename = $this->params['gallery'] . DS . $this->params['image'];
+    $this->loadModel('Thumbnail', $filename);
+    
     $this->autoRender = false;
+  }
 
-    $filename = $this->params['gallery'].DS.$this->params['image'];
-    $original_filename = Configure::read('Galleries.root').$filename;
-    $cache_name = md5($filename.filectime($original_filename));
-    $thumbnail_filename = Configure::read('Galleries.image_cache').$cache_name;
-
-
-    if (!file_exists($thumbnail_filename)) {
-
-      $image = new SimpleImage();
-      $image->load($original_filename);
-      $image->resizeToWidth(Configure::read('Image.width'));
-      $image->save($thumbnail_filename);
-      
+  
+  /**
+   * Displays the rendered thumbnail or 404 if the file cannot be found.
+   */
+  public function index()
+  {
+    if (!$this->Thumbnail->sourceFileExists())
+    {
+      $this->cakeError('error404');
     }
 
     header('Content-Type: image/jpeg');
-    echo file_get_contents($thumbnail_filename);
-
+    echo $this->Thumbnail->getData();
   }
 
-
-}//ThumbnailsController
+}

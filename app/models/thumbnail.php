@@ -1,6 +1,6 @@
 <?php
 
-include('../libs/SimpleImage.php');
+require( dirname(__FILE__).'/../libs/SimpleImage.php');
 
 class Thumbnail extends AppModel
 {
@@ -19,16 +19,26 @@ class Thumbnail extends AppModel
 
   public function __construct($data)
   {
-    $this->filename     = $data['id'];
-    $this->source       = Configure::read('Galleries.root').$this->filename;
-    $cache_name         = md5($this->filename.filectime($this->source));
-    $this->thumb_path   = Configure::read('Galleries.image_cache').$cache_name;
+    if (array_key_exists('id', $data))
+    {
+      $this->filename     = $data['id'];
+      $this->source       = Configure::read('Galleries.root').$this->filename;
+      if (file_exists($this->source))
+      {
+        $cache_name         = md5($this->filename.filectime($this->source));
+        $this->thumb_path   = Configure::read('Galleries.image_cache').$cache_name;
+      }
+    }
+    else
+    {
+      $this->source = false;
+    }
   }
 
   
   public function sourceFileExists()
   {
-    return file_exists($this->source);
+    return ($this->source && file_exists($this->source));
   }
 
 
